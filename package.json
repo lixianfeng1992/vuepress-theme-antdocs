@@ -12,7 +12,6 @@
     "antdocs",
     "ant-design"
   ],
-  "author": "Feng L.H.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zpfz/vuepress-theme-antdocs.git"

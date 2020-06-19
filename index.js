@@ -3,6 +3,7 @@ const path = require('path')
 // Theme API.
 module.exports = (options, ctx) => {
   const { sep } = path
+  const { styles } = options;
   const { themeConfig, siteConfig, sourceDir } = ctx
 
   // resolve algolia
@@ -14,26 +15,63 @@ module.exports = (options, ctx) => {
   )
 
   const enableSmoothScroll = themeConfig.smoothScroll === true
+  siteConfig.markdown = siteConfig.markdown || {};
+  siteConfig.markdown.anchor = Object.assign({}, siteConfig.markdown.anchor || {}, {
+    permalinkBefore: false, // anchor 统一放标题右边
+  })
+  themeConfig.sidebarDepth = themeConfig.sidebarDepth || 0
 
   return {
-    chainWebpack: config=> {
-      config.module
-        .rule('less')
-        .oneOf('normal')
+    chainWebpack: (config, isServer) => {
+      const baseRule = config.module.rule('less');
+      const normal = baseRule.oneOf('normal');
+      const modules = baseRule.oneOf('modules');
+
+      let resources = '';
+      if (styles) {
+        resources = path.resolve(sourceDir, styles);
+      }
+
+      normal
         .use('less-loader')
-        .options({ javascriptEnabled: true })
-        .end()
-        .end()
-        .oneOf('modules')
+        .loader('less-loader')
+        .options({
+          javascriptEnabled: true,
+        });
+
+      if (resources) {
+        normal
+          .use('sass-resources-loader')
+          .loader('sass-resources-loader')
+          .options({ resources });
+      }
+
+      modules
         .use('less-loader')
-        .options({ javascriptEnabled: true })
+        .loader('less-loader')
+        .options({
+          javascriptEnabled: true,
+        });
+
+      if (resources) {
+        modules
+          .use('sass-resources-loader')
+          .loader('sass-resources-loader')
+          .options({ resources });
+      }
+      
+      if (!isServer) {
+        config.node.set('process', true)
+      }
     },
     alias () {
       return {
         '@AlgoliaSearchBox': isAlgoliaSearch
           ? path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
           : path.resolve(__dirname, 'noopModule.js'),
-        '@docs': `${sourceDir}${sep}.vuepress${sep}styles`
+        '@docs': `${sourceDir}${sep}.vuepress${sep}styles`,
+        '@': path.resolve(sourceDir),
+        '@@': path.resolve(sourceDir, '../src'),
       }
     },
     plugins: [
@@ -62,6 +100,10 @@ module.exports = (options, ctx) => {
         type: 'details',
         before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
         after: () => '</details>\n'
+      }],
+      ['container', {
+        type: 'md-table',
+        defaultTitle: '',
       }],
       ['smooth-scroll', enableSmoothScroll]
     ]

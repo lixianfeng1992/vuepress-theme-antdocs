@@ -3,6 +3,7 @@
 @import './palette.less';
 @import './config.less';
 @import './code.less';
+@import './table-ant-design.less';
 @import './custom-blocks.less';
 @import './arrow.less';
 @import './wrapper.less';
@@ -21,6 +22,7 @@ html,body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
 }
+
 body{
   font-size: @bodyFontSize;
   color: @bodyTextColor;
@@ -43,6 +45,7 @@ body{
 
 .page {
   padding-left: @sidebarWidth - 2;
+  padding-top: 6rem;
 }
 
 .navbar {
@@ -112,7 +115,7 @@ p a code {
 }
 
 p{
-  margin-bottom: .4em;
+  margin: 1em 0;
 }
 
 kbd {
@@ -148,9 +151,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
 
   .@{contentClass}:not(.custom) > & {
-    margin-top: -(@navbarHeight+1.275);
-    padding-top: @navbarHeight + 2.3;
-    margin-bottom: 0;
+    // margin-bottom: 0;
 
     &:first-child {
       margin-top: -0.2rem;
@@ -169,27 +170,24 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 1.875rem;
-  margin-left: -1px;
+  margin: 0 0 20px -1px;
 }
 
 h2 {
   font-size: 1.5rem;
-  margin: 0;
-  padding-top: 0.2rem;
-  padding-bottom: 0.6rem;
+  margin: 1.6em 0 0.6em;
 }
 
 h3 {
   font-size: 1.25rem;
-  padding-top: .625rem;
-  padding-bottom: .625rem;
+  margin: 0;
+  margin: 1.6em 0 0.6em;
 }
 
 a.header-anchor {
   font-size: 0.9em;
-  float: left;
-  margin-left: -0.87em;
-  padding-right: 0.23em;
+  margin-left: 0.23em;
+  margin-right: -0.87em;
   margin-top: 0.125em;
   opacity: 0;
   transition: opacity 0.25s ease-in-out;
@@ -212,28 +210,33 @@ hr {
   border-top: 1px solid @borderColor;
 }
 
-table {
-  border-collapse: collapse;
-  margin: 1rem 0;
-  display: block;
-  overflow-x: auto;
-}
-
-tr {
-  border-top: 1px solid #dfe2e5;
-
-  &:nth-child(2n) {
-    background-color: #f6f8fa;
+section:not(.demo-and-code-wrapper) {
+  div {
+    background-color: palevioletred;
   }
 }
 
-th, td {
-  border: 1px solid #dfe2e5;
-  padding: 0.6em 1em;
-}
+// table {
+//   border-collapse: collapse;
+//   margin: 1rem 0;
+//   display: block;
+//   overflow-x: auto;
+// }
+
+// tr {
+//   border-top: 1px solid #dfe2e5;
+
+//   &:nth-child(2n) {
+//     background-color: #f6f8fa;
+//   }
+// }
+
+// th, td {
+//   border: 1px solid #dfe2e5;
+//   padding: 0.6em 1em;
+// }
 
 .theme-container {
-
   &.no-navbar {
     .@{contentClass}:not(.custom) > h1, h2, h3, h4, h5, h6 {
       margin-top: 1.5rem;
