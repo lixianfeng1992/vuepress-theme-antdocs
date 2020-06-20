@@ -3,7 +3,7 @@
     <a-row>
       <SidebarButton />
       <a-col :xs="24" :sm="24" :md="6" :lg="5" :xl="5" :xxl="4">
-        <RouterLink :to="$localePath" :class="{'no-logo': !$site.themeConfig.logo ? true : false,'home-link': true}">
+        <RouterLink :to="$site.themeConfig.homepage || $localePath" :class="{'no-logo': !$site.themeConfig.logo ? true : false,'home-link': true}">
           <img v-if="$site.themeConfig.logo" class="logo" :src="$withBase($site.themeConfig.logo)" :alt="$siteTitle" />
           <span v-if="$siteTitle" ref="siteName" class="site-name">{{ $siteTitle }}</span>
         </RouterLink>

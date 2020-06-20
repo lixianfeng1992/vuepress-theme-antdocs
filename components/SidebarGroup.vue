@@ -68,7 +68,6 @@ export default {
   &:not(.collapsable) {
     .sidebar-heading:not(.clickable) {
       cursor: auto;
-      color: inherit;
     }
   }
 
@@ -105,22 +104,20 @@ export default {
 }
 
 .sidebar-heading {
+  position: relative;
   display: flex;
   align-items: center;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,.45);
   transition: color 0.15s ease;
   cursor: pointer;
   font-size: 14px;
-  margin: 0.25rem auto;
+  margin: 16px auto;
   padding: 0.35rem 2.2rem;
   width: 100%;
   box-sizing: border-box;
   border-left: 0.25rem solid transparent;
   transition: color .25s ease-in-out;
 
-  &.open{
-    color: inherit;
-  }
   &:hover{
     color: @accentColor;
   }
@@ -141,6 +138,17 @@ export default {
       color: @accentColor;
     }
   }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 2.2rem;
+    width: calc(100% - 4.4rem);
+    height: 1px;
+    background-color: #f0f0f0;
+  }
 }
 
 .sidebar-group-items {
@@ -150,7 +158,7 @@ export default {
 
   > li {
     a {
-      padding-left: 3.5rem;
+      padding-left: 2.2rem;
     }
   }
 }
