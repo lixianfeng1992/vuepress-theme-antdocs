@@ -1,5 +1,5 @@
 {
-  "name": "vuepress-theme-antdocs",
+  "name": "@maiscrm/vuepress-theme-antdocs",
   "title": "AntDocs of VuePress",
   "version": "0.1.0",
   "description": "An Ant Design style theme for VuePress.",
@@ -14,12 +14,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zpfz/vuepress-theme-antdocs.git"
+    "url": "https://github.com/maiscrm/vuepress-theme-antdocs"
   },
-  "bugs": {
-    "url": "https://github.com/zpfz/vuepress-theme-antdocs/issues"
-  },
-  "homepage": "http://antdocs.seeyoz.cn",
+  "homepage": "https://github.com/maiscrm/vuepress-theme-antdocs",
   "license": "MIT",
   "dependencies": {
     "@vuepress/plugin-active-header-links": "^1.5.0",
