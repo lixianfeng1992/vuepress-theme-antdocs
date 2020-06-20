@@ -118,10 +118,6 @@ export default {
   border-left: 0.25rem solid transparent;
   transition: color .25s ease-in-out;
 
-  &:hover{
-    color: @accentColor;
-  }
-
   .arrow {
     position: absolute;
     right: 1.2em;
