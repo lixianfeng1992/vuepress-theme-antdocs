@@ -3,7 +3,7 @@ const path = require('path')
 // Theme API.
 module.exports = (options, ctx) => {
   const { sep } = path
-  const { styles } = options;
+  const { styles } = options
   const { themeConfig, siteConfig, sourceDir } = ctx
 
   // resolve algolia
@@ -23,13 +23,13 @@ module.exports = (options, ctx) => {
 
   return {
     chainWebpack: (config, isServer) => {
-      const baseRule = config.module.rule('less');
-      const normal = baseRule.oneOf('normal');
-      const modules = baseRule.oneOf('modules');
+      const baseRule = config.module.rule('less')
+      const normal = baseRule.oneOf('normal')
+      const modules = baseRule.oneOf('modules')
 
-      let resources = '';
+      let resources = ''
       if (styles) {
-        resources = path.resolve(sourceDir, styles);
+        resources = path.resolve(sourceDir, styles)
       }
 
       normal
@@ -37,27 +37,27 @@ module.exports = (options, ctx) => {
         .loader('less-loader')
         .options({
           javascriptEnabled: true,
-        });
+        })
 
       if (resources) {
         normal
           .use('sass-resources-loader')
           .loader('sass-resources-loader')
-          .options({ resources });
+          .options({ resources })
       }
 
       modules
         .use('less-loader')
         .loader('less-loader')
         .options({
-          javascriptEnabled: true,
-        });
+          javascriptEnabled: true
+        })
 
       if (resources) {
         modules
           .use('sass-resources-loader')
           .loader('sass-resources-loader')
-          .options({ resources });
+          .options({ resources })
       }
       
       if (!isServer) {
@@ -71,20 +71,18 @@ module.exports = (options, ctx) => {
           : path.resolve(__dirname, 'noopModule.js'),
         '@docs': `${sourceDir}${sep}.vuepress${sep}styles`,
         '@': path.resolve(sourceDir),
-        '@@': path.resolve(sourceDir, '../src'),
+        '@@': path.resolve(sourceDir, '../src')
       }
     },
     plugins: [
       ['@vuepress/active-header-links', options.activeHeaderLinks],
       '@vuepress/plugin-search',
       '@vuepress/plugin-nprogress',
-      [
-        'vuepress-plugin-clean-urls', {
-          normalSuffix: '/',
-          indexSuffix: '/',
-          notFoundPath: '/404.html',
-        },
-      ],
+      ['vuepress-plugin-clean-urls', {
+        normalSuffix: '.html',
+        indexSuffix: '/index.html',
+        notFoundPath: '/404.html'
+      }],
       ['container', {
         type: 'tip',
         defaultTitle: {
