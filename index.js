@@ -78,6 +78,13 @@ module.exports = (options, ctx) => {
       ['@vuepress/active-header-links', options.activeHeaderLinks],
       '@vuepress/plugin-search',
       '@vuepress/plugin-nprogress',
+      [
+        'vuepress-plugin-clean-urls', {
+          normalSuffix: '/',
+          indexSuffix: '/',
+          notFoundPath: '/404.html',
+        },
+      ],
       ['container', {
         type: 'tip',
         defaultTitle: {

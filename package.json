@@ -1,7 +1,7 @@
 {
   "name": "@maiscrm/vuepress-theme-antdocs",
   "title": "AntDocs of VuePress",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An Ant Design style theme for VuePress.",
   "main": "index.js",
   "keywords": [
@@ -19,19 +19,20 @@
   "homepage": "https://github.com/maiscrm/vuepress-theme-antdocs",
   "license": "MIT",
   "dependencies": {
-    "@vuepress/plugin-active-header-links": "^1.5.0",
-    "@vuepress/plugin-nprogress": "^1.5.0",
-    "@vuepress/plugin-search": "^1.5.0",
-    "docsearch.js": "^2.5.2",
-    "lodash": "^4.17.15",
-    "core-js": "^2.6.11",
-    "vuepress-plugin-container": "^2.1.2",
-    "vuepress-plugin-smooth-scroll": "^0.0.9"
+    "@vuepress/plugin-active-header-links": "1.5.0",
+    "@vuepress/plugin-nprogress": "1.5.0",
+    "@vuepress/plugin-search": "1.5.0",
+    "core-js": "2.6.11",
+    "docsearch.js": "2.5.2",
+    "lodash": "4.17.15",
+    "vuepress-plugin-container": "2.1.2",
+    "vuepress-plugin-smooth-scroll": "0.0.9",
+    "vuepress-plugin-clean-urls": "1.1.1"
   },
   "peerDependencies": {
     "ant-design-vue": ">=1.6.0",
-    "vuex": ">=3.1.0",
     "less": ">=3.9.0",
-    "less-loader": ">=4.1.0"
+    "less-loader": ">=4.1.0",
+    "vuex": ">=3.1.0"
   }
 }
